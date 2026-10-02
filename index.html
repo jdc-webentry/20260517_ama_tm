@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>出場申込フォーム｜2026 中部ダンスフェスティバル in 名古屋（ソロダンス）</title>
+<title>出場申込フォーム｜2026 中部ダンスフェスティバル in 名古屋（チームマッチ）</title>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <link rel="preconnect" href="https://zipcloud.ibsnet.co.jp">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
@@ -147,21 +147,37 @@ select.invalid{border-color:var(--err)!important}
 .conflict-alert{display:none;background:#ffebee;border:1.5px solid #e57373;color:#b71c1c;border-radius:8px;padding:10px 14px;font-size:13px;font-weight:700;margin-bottom:10px}
 .conflict-alert.show{display:block}
 @media (max-width:520px){.solo-player-card input,.solo-player-card select,#contactName{max-width:100%!important}}
+.pair-card{border:1px solid #cfd6f1;border-radius:10px;padding:12px;margin-bottom:12px;background:#f8f9ff}
+.pair-title{font-size:13px;font-weight:900;color:var(--navy);margin-bottom:8px}
+.pair-cols{display:flex;gap:12px}
+.pair-col{flex:1;border-radius:8px;padding:10px}
+.pair-col.l{background:linear-gradient(180deg,#e8f1fb,#f6faff);border:1px solid #cfe0f5}
+.pair-col.p{background:linear-gradient(180deg,#fdeaf2,#fff8fb);border:1px solid #f4cfe0}
+.pair-col .tt{font-size:12px;font-weight:900;color:#fff;padding:2px 10px;border-radius:4px;margin-bottom:8px;display:inline-block}
+.pair-col.l .tt{background:linear-gradient(90deg,#1565c0,#42a5f5)}
+.pair-col.p .tt{background:linear-gradient(90deg,#c2185b,#f06292)}
+.pair-col .form-group{margin-bottom:8px}
+.dance-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.dance-chip{display:flex;align-items:center;gap:6px;padding:8px 14px;border:1.5px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;font-weight:800}
+.dance-chip input{width:18px;height:18px}
+.dance-chip.on{border-color:var(--navy);background:#e6eaff}
+.team-info{background:#fff8e1;border:1px solid #ffe082;border-radius:8px;padding:8px 12px;font-size:13px;margin-top:8px;display:none}
+.team-info.show{display:block}
+@media (max-width:640px){.pair-cols{flex-direction:column}}
+.w-half{max-width:50%}@media (max-width:520px){.w-half{max-width:100%}}
 </style>
 </head>
 <body>
 <header>
   <div class="header-badge"><i class="fas fa-award"></i> JDC公認 No.202612</div>
-  <h1>2026 中部ダンスフェスティバル in 名古屋（ソロダンス）</h1>
-  <h2>アマチュア ソロダンス 出場申込フォーム</h2>
+  <h1>2026 中部ダンスフェスティバル in 名古屋（チームマッチ）</h1>
+  <h2>併催：2026 アマチュアチームマッチ 出場申込フォーム</h2>
   <div class="header-info">
     <span><i class="fas fa-calendar-alt"></i> 令和8年5月17日（日）14:00〜19:00（予定）</span>
     <span><i class="fas fa-map-marker-alt"></i> 岡谷鋼機名古屋公会堂 4Fホール（名古屋市昭和区鶴舞1-1-3）</span>
-    <span><i class="fas fa-user"></i> 男女ともに一人での参加</span>
   </div>
   <div class="header-deadline"><i class="fas fa-exclamation-triangle"></i> 出場申込締切：令和8年4月17日（金）必着</div>
 </header>
-
 <div class="container">
   <div class="step-bar">
     <div class="step active" id="step1"><div class="step-circle">1</div><div class="step-label">入力</div></div>
@@ -174,8 +190,8 @@ select.invalid{border-color:var(--err)!important}
   <div id="formView">
     <div class="notice">
       <div class="notice-title"><i class="fas fa-info-circle"></i> 申込方法・振込先</div>
-      <p>① このフォームに必要事項を入力し、送信してください。</p>
-      <p>② 出場料を下記口座にお振り込みください（通信欄に大会日・大会名を必ず明記／現金不可）。</p>
+      <p>① 1チーム・1区分につき1回、このフォームに入力して送信してください（複数区分に出場する場合は区分ごとに送信）。</p>
+      <p>② 出場料（1区分 5,000円）を下記口座にお振り込みください（通信欄に大会日・大会名を必ず明記／現金不可）。</p>
       <p>③ 振込日・振込人名・振込金額をフォームに入力して送信してください。</p>
       <div class="bank-info">
         <p>【振込先】郵便振替口座　JDC中部総局 競技部</p>
@@ -185,52 +201,37 @@ select.invalid{border-color:var(--err)!important}
     </div>
 
     <div class="card">
-      <div class="card-title"><i class="fas fa-clipboard-list"></i> 注意事項</div>
-      <ul class="caution-list">
-        <li>ソロダンスに限り、ボールルームとラテンアメリカンの重複出場は不可です（他のカップル競技との重複出場は可）。</li>
-        <li>服装は正装または平服、自由です。</li>
-        <li>出場料は1区分 1,500円（お試し価格）です。納入された出場料は、原則として返金できません。</li>
-        <li>期限を過ぎて申込をされた方は、遅延事務手数料（2,000円）を徴収させていただく場合があります。</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <div class="card-title"><i class="fas fa-user"></i> 選手情報</div>
-      <div class="solo-player-card">
-        <div class="form-group">
-          <label>氏名（漢字）<span class="req">必須</span></label>
-          <input type="text" id="nameKanji" placeholder="例：田中　花子" autocomplete="off" enterkeyhint="next">
-          <div class="err-msg" id="nameKanji-err">氏名（漢字）を入力してください</div>
-        </div>
-        <div class="form-group">
-          <label>氏名（フリガナ）<span class="req">必須</span></label>
-          <input type="text" id="nameKana" placeholder="例：タナカ　ハナコ" autocomplete="off" lang="ja" enterkeyhint="next">
-          <div class="hint">全角カタカナ（ひらがな・半角カナは自動で変換されます）</div>
-          <div class="err-msg" id="nameKana-err">全角カタカナで入力してください</div>
-        </div>
-        <div class="form-group">
-          <label>所属教室名<span class="opt">任意</span></label>
-          <input type="text" id="dojo" placeholder="例：〇〇ダンススタジオ" autocomplete="off" enterkeyhint="next">
-        </div>
-        <div class="form-group" style="margin-bottom:0">
-          <label>性別<span class="req">必須</span></label>
-          <select id="gender">
-            <option value="">選択してください</option>
-            <option value="男性">男性</option>
-            <option value="女性">女性</option>
-          </select>
-          <div class="err-msg" id="gender-err">性別を選択してください</div>
-        </div>
+      <div class="card-title"><i class="fas fa-trophy"></i> 出場区分・チーム</div>
+      <div class="form-group">
+        <label>区分<span class="req">必須</span></label>
+        <select id="division"></select>
+        <div class="team-info" id="teamInfo"></div>
+        <div class="err-msg" id="division-err">区分を選択してください</div>
+      </div>
+      <div class="form-group">
+        <label>チーム名<span class="req">必須</span></label>
+        <input type="text" id="teamName" class="w-half" placeholder="例：中部Aチーム" autocomplete="off">
+        <div class="err-msg" id="teamName-err">チーム名を入力してください</div>
+      </div>
+      <div class="form-group" style="margin-bottom:0">
+        <label>サークル名又は所属教室名<span class="opt">任意</span></label>
+        <input type="text" id="dojo" class="w-half" placeholder="例：〇〇ダンススタジオ" autocomplete="off">
       </div>
     </div>
 
+    <div class="card" id="pairsCard" style="display:none">
+      <div class="card-title"><i class="fas fa-user-friends"></i> 出場選手（組ごとに入力）</div>
+      <p class="hint" style="margin:-6px 0 10px">リーダーの性別は不問です。各組の出場種目にチェックを入れてください。</p>
+      <div id="pairs"></div>
+      <div class="err-msg" id="pairs-err">すべての組の選手氏名（漢字・フリガナ）と出場種目を入力してください</div>
+    </div>
+
     <div class="card">
-      <div class="card-title"><i class="fas fa-address-book"></i> 連絡先</div>
+      <div class="card-title"><i class="fas fa-address-book"></i> 代表者・連絡先</div>
       <div class="form-group">
-        <label>連絡先氏名<span class="req">必須</span></label>
-        <input type="text" id="contactName" placeholder="例：田中　花子" autocomplete="name">
-        <div class="hint">選手の氏名が自動で入ります（変更できます）</div>
-        <div class="err-msg" id="contactName-err">連絡先氏名を入力してください</div>
+        <label>代表者氏名<span class="req">必須</span></label>
+        <input type="text" id="contactName" class="w-half" placeholder="例：田中　太郎" autocomplete="name">
+        <div class="err-msg" id="contactName-err">代表者氏名を入力してください</div>
       </div>
       <div class="form-group">
         <label>郵便番号<span class="req">必須</span></label>
@@ -244,14 +245,8 @@ select.invalid{border-color:var(--err)!important}
       <div class="form-group">
         <label>都道府県・市区町村<span class="req">必須</span></label>
         <div class="form-row">
-          <div class="form-group">
-            <input type="text" id="pref" placeholder="都道府県" autocomplete="address-level1">
-            <div class="err-msg" id="pref-err">都道府県を入力してください</div>
-          </div>
-          <div class="form-group">
-            <input type="text" id="city" placeholder="市区町村" autocomplete="address-level2">
-            <div class="err-msg" id="city-err">市区町村を入力してください</div>
-          </div>
+          <div class="form-group"><input type="text" id="pref" placeholder="都道府県" autocomplete="address-level1"><div class="err-msg" id="pref-err">都道府県を入力してください</div></div>
+          <div class="form-group"><input type="text" id="city" placeholder="市区町村" autocomplete="address-level2"><div class="err-msg" id="city-err">市区町村を入力してください</div></div>
         </div>
       </div>
       <div class="form-group">
@@ -266,28 +261,17 @@ select.invalid{border-color:var(--err)!important}
       </div>
       <div class="form-group">
         <label>メールアドレス<span class="req">必須</span></label>
-        <input type="email" id="email" class="w-email" placeholder="例：hanako@example.com" inputmode="email" autocomplete="email">
+        <input type="email" id="email" class="w-email" placeholder="例：taro@example.com" inputmode="email" autocomplete="email">
         <div class="err-msg" id="email-err">メールアドレスを正しく入力してください</div>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-title"><i class="fas fa-trophy"></i> 出場競技区分</div>
-      <p class="hint" style="margin:-6px 0 8px">アマチュア ソロダンス　1区分 1,500円（ボールルームとラテンアメリカンの重複出場は不可）</p>
-      <div class="conflict-alert" id="conflictAlert"><i class="fas fa-ban"></i> ボールルームとラテンアメリカンの重複出場はできません。一方のチェックを外してください。</div>
-      <div class="event-col-wrap">
-        <div><div class="col-head col-br">ボールルーム</div><div class="event-grid" id="brEvents"></div></div>
-        <div><div class="col-head col-la">ラテンアメリカン</div><div class="event-grid" id="laEvents"></div></div>
-      </div>
-      <div class="err-msg" id="events-err">出場する区分を1つ以上選択してください</div>
-      <div class="fee-box">
-        <span class="fee-label">合計出場料</span>
+      <div class="card-title"><i class="fas fa-yen-sign"></i> 出場料・振込情報</div>
+      <div class="fee-box" style="margin-top:0;margin-bottom:14px">
+        <span class="fee-label">出場料（1区分）</span>
         <span><span class="fee-amount" id="feeTotal">0</span><span class="fee-unit">円</span></span>
       </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title"><i class="fas fa-yen-sign"></i> 振込情報</div>
       <div class="transfer-row">
         <div class="form-group">
           <label>振込日<span class="req">必須</span></label>
@@ -296,17 +280,27 @@ select.invalid{border-color:var(--err)!important}
         </div>
         <div class="form-group">
           <label>振込人名<span class="req">必須</span></label>
-          <input type="text" id="transferName" placeholder="例：タナカ　ハナコ" autocomplete="off" lang="ja">
+          <input type="text" id="transferName" placeholder="例：タナカ　タロウ" autocomplete="off" lang="ja">
           <div class="hint">全角カタカナ（ひらがな・半角カナは自動で変換されます）</div>
           <div class="err-msg" id="transferName-err">全角カタカナで入力してください</div>
         </div>
         <div class="form-group">
           <label>振込金額<span class="req">必須</span></label>
-          <input type="number" id="transferAmount" min="0" inputmode="numeric" placeholder="例：1500">
+          <input type="number" id="transferAmount" min="0" inputmode="numeric" placeholder="例：5000">
           <div class="hint">※ カンマ（,）なしで入力してください</div>
           <div class="err-msg" id="transferAmount-err">振込金額を入力してください</div>
         </div>
       </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="fas fa-clipboard-list"></i> 注意事項</div>
+      <ul class="caution-list">
+        <li>各セクションにおいて、出場チーム数によっては中止の場合もあります。</li>
+        <li>女性用ダンスシューズには、必ずヒールカバーを装着してください。</li>
+        <li>納入された出場料は、原則として返金できません。</li>
+        <li>期限を過ぎて申し込まれた方は、延滞事務手数料（2,000円）を徴収させていただく場合があります。</li>
+      </ul>
     </div>
 
     <div class="btn-row">
@@ -318,11 +312,11 @@ select.invalid{border-color:var(--err)!important}
     <div class="card">
       <div class="card-title"><i class="fas fa-clipboard-check"></i> 入力内容の確認</div>
       <table class="confirm-table" id="confirmTable"></table>
-      <div style="margin-top:14px" id="confirmEvents"></div>
-      <div style="text-align:right;margin-top:10px">合計出場料：<span class="confirm-fee" id="confirmFee"></span></div>
+      <div style="margin-top:14px" id="confirmPairs"></div>
+      <div style="text-align:right;margin-top:10px">出場料：<span class="confirm-fee" id="confirmFee"></span></div>
     </div>
     <div class="btn-row">
-      <button type="button" class="btn btn-secondary" onclick="backToForm()">修正する</button>
+      <button type="button" class="btn btn-secondary" onclick="showView('form')">修正する</button>
       <button type="button" class="btn btn-primary" id="submitBtn" onclick="submitForm()"><i class="fas fa-paper-plane"></i> この内容で送信</button>
     </div>
   </div>
@@ -331,7 +325,7 @@ select.invalid{border-color:var(--err)!important}
     <div class="card">
       <div class="complete-icon"><i class="fas fa-circle-check"></i></div>
       <div class="complete-title">申込を受け付けました</div>
-      <div class="complete-sub">ご入力のメールアドレスにも控えをお送りしています。</div>
+      <div class="complete-sub">ご入力のメールアドレスにも控えをお送りしています。届かない場合は迷惑メールフォルダをご確認ください。</div>
       <div class="bank-box">
         【振込先】郵便振替口座　JDC中部総局 競技部　口座番号：00830-5-88490<br>
         《他行から》ゆうちょ銀行 〇八九店（ゼロハチキュウ店）当座 0088490<br>
@@ -342,131 +336,125 @@ select.invalid{border-color:var(--err)!important}
   </div>
 </div>
 <script>
-const FEE_SOLO = 1500;
+const EVENT_NAME = '2026 中部ダンスフェスティバル in 名古屋（併催：2026 アマチュアチームマッチ）';
 const EVENT_DATE = '令和8年5月17日（日）';
-const soloBRData = [
-  { no: 29, name: 'アマチュア ソロダンス', detail: 'W 単科', fee: FEE_SOLO },
-  { no: 31, name: 'アマチュア ソロダンス', detail: 'T 単科', fee: FEE_SOLO },
+const FEE = 5000;
+const DIVISIONS = [
+  { no: 33, name: 'チームマッチ・タイガー戦', pairs: 4, dances: ['W','T','R','C'] },
+  { no: 34, name: 'チームマッチ・イーグル戦', pairs: 2, dances: ['W','T','R','C'] },
+  { no: 35, name: 'チームマッチ・モダン戦',   pairs: 3, dances: ['W','T','F'] },
 ];
-const soloLAData = [
-  { no: 30, name: 'アマチュア ソロダンス', detail: 'R 単科', fee: FEE_SOLO },
-  { no: 32, name: 'アマチュア ソロダンス', detail: 'C 単科', fee: FEE_SOLO },
-];
-const allEvents = [...soloBRData, ...soloLAData];
+const DANCE_NAME = { W:'ワルツ', T:'タンゴ', F:'フォックストロット', R:'ルンバ', C:'チャチャチャ' };
+const $ = id => document.getElementById(id);
+const gv = id => ($(id).value || '').trim();
 const pad2 = n => String(n).padStart(2, '0');
-const gv = id => (document.getElementById(id).value || '').trim();
-const isBR = no => soloBRData.some(e => e.no === no);
+const yen = n => '¥' + Number(n).toLocaleString();
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const getDiv = () => DIVISIONS.find(d => String(d.no) === $('division').value);
 
 window.addEventListener('load', () => { try { emailjs.init('Y0hgw0hQjsbdC3pnP'); } catch(e) {} });
 
-/* ---------- 競技区分 ---------- */
-function buildEvents(list, cat, containerId) {
-  const wrap = document.getElementById(containerId);
-  list.forEach(ev => {
-    const div = document.createElement('div');
-    div.className = 'event-item';
-    div.dataset.cat = cat;
-    div.dataset.no = ev.no;
-    div.innerHTML = `<input type="checkbox" value="${ev.no}">
-      <div><div><span class="event-no">【No.${pad2(ev.no)}】</span> <span class="event-name">${ev.detail}</span></div>
-      <div class="event-sub">${ev.name}　¥${ev.fee.toLocaleString()}</div></div>`;
-    div.addEventListener('click', e => {
-      const cb = div.querySelector('input[type=checkbox]');
-      const willCheck = (e.target === cb) ? cb.checked : !cb.checked;
-      if (willCheck) {
-        const opposite = cat === 'BR' ? 'LA' : 'BR';
-        const oppChecked = document.querySelectorAll(`.event-item[data-cat="${opposite}"] input:checked`).length > 0;
-        if (oppChecked) {
-          e.preventDefault();
-          cb.checked = false;
-          div.classList.remove('checked');
-          document.getElementById('conflictAlert').classList.add('show');
-          return;
-        }
-      }
-      if (e.target !== cb) cb.checked = willCheck;
-      div.classList.toggle('checked', cb.checked);
-      document.getElementById('conflictAlert').classList.remove('show');
-      document.getElementById('events-err').classList.remove('show');
-      calcFee();
-    });
-    wrap.appendChild(div);
+/* 区分 */
+$('division').innerHTML = '<option value="">選択してください</option>' +
+  DIVISIONS.map(d => `<option value="${d.no}">【No.${pad2(d.no)}】${d.name}（${d.dances.join('')}・1チーム${d.pairs}組編成）</option>`).join('');
+$('division').addEventListener('change', buildPairs);
+
+function buildPairs() {
+  const d = getDiv();
+  const wrap = $('pairs'); wrap.innerHTML = '';
+  $('pairsCard').style.display = d ? 'block' : 'none';
+  $('teamInfo').classList.toggle('show', !!d);
+  $('feeTotal').textContent = d ? FEE.toLocaleString() : '0';
+  if (!d) return;
+  $('teamInfo').textContent = `${d.name}：1チーム${d.pairs}組編成（種目 ${d.dances.map(x => x + '＝' + DANCE_NAME[x]).join('／')}）`;
+  for (let i = 1; i <= d.pairs; i++) {
+    const el = document.createElement('div');
+    el.className = 'pair-card';
+    el.innerHTML = `<div class="pair-title">第${i}組</div>
+      <div class="pair-cols">
+        <div class="pair-col l"><span class="tt">リーダー</span>
+          <div class="form-group"><label>氏名（漢字）<span class="req">必須</span></label><input type="text" id="p${i}lKanji" placeholder="例：田中　太郎" autocomplete="off"></div>
+          <div class="form-group"><label>氏名（フリガナ）<span class="req">必須</span></label><input type="text" id="p${i}lKana" class="kana" placeholder="例：タナカ　タロウ" autocomplete="off" lang="ja"></div>
+        </div>
+        <div class="pair-col p"><span class="tt">パートナー</span>
+          <div class="form-group"><label>氏名（漢字）<span class="req">必須</span></label><input type="text" id="p${i}pKanji" placeholder="例：田中　花子" autocomplete="off"></div>
+          <div class="form-group"><label>氏名（フリガナ）<span class="req">必須</span></label><input type="text" id="p${i}pKana" class="kana" placeholder="例：タナカ　ハナコ" autocomplete="off" lang="ja"></div>
+        </div>
+      </div>
+      <label style="font-size:13px;font-weight:700;color:var(--sub);margin-top:8px;display:block">出場種目<span class="req">必須</span></label>
+      <div class="dance-row">${d.dances.map(x => `<label class="dance-chip"><input type="checkbox" class="dance" data-pair="${i}" value="${x}">${x}（${DANCE_NAME[x]}）</label>`).join('')}</div>`;
+    wrap.appendChild(el);
+  }
+  wrap.querySelectorAll('.kana').forEach(el => {
+    el.addEventListener('blur', () => el.value = toKatakana(el.value));
+    el.addEventListener('compositionend', () => setTimeout(() => el.value = toKatakana(el.value), 0));
   });
-}
-buildEvents(soloBRData, 'BR', 'brEvents');
-buildEvents(soloLAData, 'LA', 'laEvents');
-
-function selectedEvents() {
-  const nos = [...document.querySelectorAll('.event-item input:checked')].map(c => parseInt(c.value, 10));
-  return allEvents.filter(e => nos.includes(e.no));
-}
-function calcFee() {
-  const t = selectedEvents().reduce((s, e) => s + e.fee, 0);
-  document.getElementById('feeTotal').textContent = t.toLocaleString();
-  return t;
+  wrap.querySelectorAll('.dance').forEach(cb => cb.addEventListener('change', () => cb.parentNode.classList.toggle('on', cb.checked)));
 }
 
-/* ---------- 全角カタカナ・連絡先氏名 ---------- */
+/* カタカナ */
 const KATA_RE = /^[ァ-ヶー・゛゜　]+$/;
 function toKatakana(s) {
   return String(s || '').normalize('NFKC')
     .replace(/[ぁ-ゖ]/g, c => String.fromCharCode(c.charCodeAt(0) + 0x60))
     .replace(/[ \t　]+/g, '　').trim();
 }
-function normKana(id) { const el = document.getElementById(id); el.value = toKatakana(el.value); return el.value; }
-['nameKana', 'transferName'].forEach(id => {
-  const el = document.getElementById(id);
-  el.addEventListener('blur', () => normKana(id));
-  el.addEventListener('compositionend', () => setTimeout(() => normKana(id), 0));
-});
-let contactEdited = false;
-function syncContact() { if (contactEdited) return; document.getElementById('contactName').value = document.getElementById('nameKanji').value; }
-document.getElementById('nameKanji').addEventListener('input', syncContact);
-document.getElementById('contactName').addEventListener('input', function () {
-  contactEdited = this.value.trim() !== '' && this.value !== document.getElementById('nameKanji').value;
-  if (this.value.trim() === '') syncContact();
-});
+function normKana(id) { const el = $(id); el.value = toKatakana(el.value); return el.value; }
+$('transferName').addEventListener('blur', () => normKana('transferName'));
+$('transferName').addEventListener('compositionend', () => setTimeout(() => normKana('transferName'), 0));
 
-/* ---------- 郵便番号 (zipcloud JSONP) ---------- */
+/* 郵便番号 */
 function searchZip() {
-  const raw = document.getElementById('zip').value.replace(/-/g, '').replace(/[０-９]/g, s => String.fromCharCode(s.charCodeAt(0) - 0xFEE0));
+  const raw = $('zip').value.replace(/-/g, '').replace(/[０-９]/g, s => String.fromCharCode(s.charCodeAt(0) - 0xFEE0));
   if (raw.length !== 7) { alert('郵便番号を7桁で入力してください'); return; }
   const btn = document.querySelector('.btn-zip');
   btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
   const cbName = '_zipCb_' + Date.now();
   const script = document.createElement('script');
-  const reset = () => { delete window[cbName]; if (script.parentNode) document.head.removeChild(script); btn.disabled = false; btn.innerHTML = '<i class="fas fa-search"></i> 検索'; };
-  window[cbName] = function (data) {
+  const reset = () => { delete window[cbName]; if (script.parentNode) script.remove(); btn.disabled = false; btn.innerHTML = '<i class="fas fa-search"></i> 検索'; };
+  window[cbName] = data => {
     reset();
-    if (data && data.results) {
-      const r = data.results[0];
-      document.getElementById('pref').value = r.address1;
-      document.getElementById('city').value = r.address2 + r.address3;
-    } else { alert('住所が見つかりませんでした。手動で入力してください。'); }
+    if (data && data.results) { const r = data.results[0]; $('pref').value = r.address1; $('city').value = r.address2 + r.address3; }
+    else alert('住所が見つかりませんでした。手動で入力してください。');
   };
-  script.onerror = function () { reset(); alert('住所検索に失敗しました。手動で入力してください。'); };
+  script.onerror = () => { reset(); alert('住所検索に失敗しました。手動で入力してください。'); };
   script.src = `https://zipcloud.ibsnet.co.jp/api/search?zipcode=${raw}&callback=${cbName}`;
   document.head.appendChild(script);
 }
-document.getElementById('zip').addEventListener('input', function () {
-  const raw = this.value.replace(/[^0-9０-９]/g, '');
-  if (raw.length === 7) searchZip();
-});
+$('zip').addEventListener('input', function () { if (this.value.replace(/[^0-9０-９]/g, '').length === 7) searchZip(); });
 
-/* ---------- 検証・確認画面 ---------- */
+/* 検証 */
 function setErr(id, bad) {
-  const el = document.getElementById(id); if (el) el.classList.toggle('invalid', bad);
-  const m = document.getElementById(id + '-err'); if (m) m.classList.toggle('show', bad);
+  const el = $(id); if (el) el.classList.toggle('invalid', bad);
+  const m = $(id + '-err'); if (m) m.classList.toggle('show', bad);
   return bad;
 }
-function addrFull() { return gv('pref') + gv('city') + gv('addr'); }
+const addrFull = () => gv('pref') + gv('city') + gv('addr');
+
+function collectPairs(d) {
+  const out = []; let bad = false;
+  for (let i = 1; i <= d.pairs; i++) {
+    ['lKana', 'pKana'].forEach(k => { const el = $(`p${i}${k}`); el.value = toKatakana(el.value); });
+    const p = {
+      no: i,
+      lKanji: gv(`p${i}lKanji`), lKana: gv(`p${i}lKana`),
+      pKanji: gv(`p${i}pKanji`), pKana: gv(`p${i}pKana`),
+      dances: [...document.querySelectorAll(`.dance[data-pair="${i}"]:checked`)].map(c => c.value),
+    };
+    ['lKanji', 'pKanji'].forEach(k => { const b = !gv(`p${i}${k}`); $(`p${i}${k}`).classList.toggle('invalid', b); bad = bad || b; });
+    ['lKana', 'pKana'].forEach(k => { const b = !KATA_RE.test(gv(`p${i}${k}`)); $(`p${i}${k}`).classList.toggle('invalid', b); bad = bad || b; });
+    if (p.dances.length === 0) bad = true;
+    out.push(p);
+  }
+  return { pairs: out, bad };
+}
 
 function goConfirm() {
-  normKana('nameKana'); normKana('transferName');
+  normKana('transferName');
+  const d = getDiv();
   let bad = false;
-  bad = setErr('nameKanji', !gv('nameKanji')) || bad;
-  bad = setErr('nameKana', !KATA_RE.test(gv('nameKana'))) || bad;
-  bad = setErr('gender', !gv('gender')) || bad;
+  bad = setErr('division', !d) || bad;
+  bad = setErr('teamName', !gv('teamName')) || bad;
   bad = setErr('contactName', !gv('contactName')) || bad;
   bad = setErr('zip', gv('zip').replace(/\D/g, '').length !== 7) || bad;
   bad = setErr('pref', !gv('pref')) || bad;
@@ -477,91 +465,86 @@ function goConfirm() {
   bad = setErr('transferDate', !gv('transferDate')) || bad;
   bad = setErr('transferName', !KATA_RE.test(gv('transferName'))) || bad;
   bad = setErr('transferAmount', !gv('transferAmount') || parseInt(gv('transferAmount'), 10) <= 0) || bad;
-  const sel = selectedEvents();
-  const noEvents = sel.length === 0;
-  document.getElementById('events-err').classList.toggle('show', noEvents);
-  bad = noEvents || bad;
-  if (sel.some(e => isBR(e.no)) && sel.some(e => !isBR(e.no))) {
-    alert('ボールルームとラテンアメリカンの重複出場はできません。'); return;
-  }
+  let pairs = [];
+  if (d) { const r = collectPairs(d); pairs = r.pairs; $('pairs-err').classList.toggle('show', r.bad); bad = r.bad || bad; }
   if (bad) {
     const first = document.querySelector('.invalid, .err-msg.show');
     if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
   }
-  const total = calcFee();
+  window._pairs = pairs;
   const rows = [
-    ['氏名', `${gv('nameKanji')}（${gv('nameKana')}）`],
-    ['性別', gv('gender')],
-    ['所属教室', gv('dojo') || '（なし）'],
-    ['連絡先氏名', gv('contactName')],
+    ['区分', `【No.${pad2(d.no)}】${d.name}`],
+    ['チーム名', gv('teamName')],
+    ['サークル名又は所属教室名', gv('dojo') || '（なし）'],
+    ['代表者氏名', gv('contactName')],
     ['住所', `〒${gv('zip')} ${addrFull()}`],
     ['携帯番号', gv('mobile')],
     ['メールアドレス', gv('email')],
     ['振込日', gv('transferDate')],
     ['振込人名', gv('transferName')],
-    ['振込金額', '¥' + parseInt(gv('transferAmount'), 10).toLocaleString()],
+    ['振込金額', yen(parseInt(gv('transferAmount'), 10))],
   ];
-  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  document.getElementById('confirmTable').innerHTML = rows.map(r => `<tr><th>${r[0]}</th><td>${esc(r[1])}</td></tr>`).join('');
-  document.getElementById('confirmEvents').innerHTML = sel.map(e =>
-    `<div class="event-tag"><span class="tag-no">【No.${pad2(e.no)}】</span>${e.name} ${e.detail}<span class="tag-fee">¥${e.fee.toLocaleString()}</span></div>`).join('');
-  document.getElementById('confirmFee').textContent = '¥' + total.toLocaleString();
+  $('confirmTable').innerHTML = rows.map(r => `<tr><th>${r[0]}</th><td>${esc(r[1])}</td></tr>`).join('');
+  $('confirmPairs').innerHTML = pairs.map(p =>
+    `<div class="event-tag" style="flex-wrap:wrap"><span class="tag-no">第${p.no}組</span>
+     L：${esc(p.lKanji)}（${esc(p.lKana)}）／P：${esc(p.pKanji)}（${esc(p.pKana)}）
+     <span class="tag-fee">${p.dances.join('')}</span></div>`).join('');
+  $('confirmFee').textContent = yen(FEE);
   showView('confirm');
 }
 function showView(v) {
-  document.getElementById('formView').style.display = v === 'form' ? 'block' : 'none';
-  document.getElementById('confirmView').style.display = v === 'confirm' ? 'block' : 'none';
-  document.getElementById('completeView').style.display = v === 'complete' ? 'block' : 'none';
+  $('formView').style.display = v === 'form' ? 'block' : 'none';
+  $('confirmView').style.display = v === 'confirm' ? 'block' : 'none';
+  $('completeView').style.display = v === 'complete' ? 'block' : 'none';
   const order = ['form', 'confirm', 'complete'];
   ['step1', 'step2', 'step3'].forEach((id, i) => {
-    const el = document.getElementById(id);
-    el.classList.toggle('active', order[i] === v);
-    el.classList.toggle('done', i < order.indexOf(v));
+    $(id).classList.toggle('active', order[i] === v);
+    $(id).classList.toggle('done', i < order.indexOf(v));
   });
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-function backToForm() { showView('form'); }
 
-/* ---------- 送信 ---------- */
+/* 送信 */
 let isSending = false;
 async function submitForm() {
   if (isSending) return;
   isSending = true;
-  const btn = document.getElementById('submitBtn');
+  const btn = $('submitBtn');
   btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 送信中...';
-  const sel = selectedEvents();
-  const total = sel.reduce((s, e) => s + e.fee, 0);
-  const emailVal = gv('email');
-  const eventsLine = sel.map(e => `【No.${pad2(e.no)}】${e.name} ${e.detail}：¥${e.fee.toLocaleString()}`).join('\n');
+  const d = getDiv(), pairs = window._pairs, emailVal = gv('email');
+  const pairsLine = pairs.map(p => `第${p.no}組　種目：${p.dances.join('')}\n　リーダー：${p.lKanji}（${p.lKana}）\n　パートナー：${p.pKanji}（${p.pKana}）`).join('\n');
   const addr = `〒${gv('zip')} ${addrFull()}`;
+  const eventsLine = `【No.${pad2(d.no)}】${d.name}（1チーム${d.pairs}組）：${yen(FEE)}`;
   const messageBody =
     `大会開催日：${EVENT_DATE}\n` +
-    `【ソロダンス申込】\n` +
-    `選手氏名：${gv('nameKanji')}（${gv('nameKana')}）\n` +
-    `性別：${gv('gender')}\n` +
-    `所属教室：${gv('dojo') || 'なし'}\n` +
-    `連絡先：${gv('contactName')}　携帯：${gv('mobile')}\n` +
+    `大会名：${EVENT_NAME}\n\n` +
+    `【チームマッチ申込】\n` +
+    `区分：【No.${pad2(d.no)}】${d.name}\n` +
+    `チーム名：${gv('teamName')}\n` +
+    `サークル名又は所属教室名：${gv('dojo') || 'なし'}\n` +
+    `\n【出場選手】\n${pairsLine}\n` +
+    `\n代表者：${gv('contactName')}　携帯：${gv('mobile')}\n` +
     `メールアドレス：${emailVal}\n` +
     `住所：${addr}\n` +
-    `\n【出場区分】\n${eventsLine}\n` +
-    `\n合計出場料：¥${total.toLocaleString()}\n` +
+    `\n出場料：${yen(FEE)}\n` +
     `振込日：${gv('transferDate')}\n` +
     `振込人名：${gv('transferName')}\n` +
-    `振込金額：¥${parseInt(gv('transferAmount') || '0', 10).toLocaleString()}`;
+    `振込金額：${yen(parseInt(gv('transferAmount') || '0', 10))}`;
   const params = {
     to_email: 'jdc.ama.entry@gmail.com',
     cc_email: emailVal,
     reply_to: emailVal,
-    from_name: gv('nameKanji'),
-    event_name: '2026 中部ダンスフェスティバル in 名古屋（ソロダンス）',
-    leader: `${gv('nameKanji')}（${gv('nameKana')}）`,
-    partner: gv('gender'),
+    from_name: `${gv('contactName')}（${gv('teamName')}）`,
+    event_name: EVENT_NAME,
+    reg_no: `チーム名：${gv('teamName')}`,
+    leader: `チーム：${gv('teamName')}`,
+    partner: `区分：【No.${pad2(d.no)}】${d.name}`,
     phone: gv('mobile'),
     email: emailVal,
     address: addr,
     events: eventsLine,
-    total_fee: '¥' + total.toLocaleString(),
+    total_fee: yen(FEE),
     message: messageBody,
   };
   try {
